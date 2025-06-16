@@ -1,0 +1,420 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Base styles - these apply to all screen sizes */
+
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  /* overflow-x: hidden; /* Added cautiously: only if specific element causing overflow cannot be found and fixed. */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Removes bottom space under images if they are inline */
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+#showcase {
+  min-height: 400px;
+  background: #333 url('../images/showcase.jpg') no-repeat 0 -400px;
+  text-align: center;
+  color: #fff;
+}
+
+#main-content {
+  padding: 20px;
+  background: #fff;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* Media Queries */
+
+/* For extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  /* Styles for extra small devices */
+  .logo-text {
+    font-size: 28px; /* Further reduce font size */
+    /* left: 80px; */ /* Further adjust positioning if needed */
+  }
+
+  .btn1 {
+    padding: 12px 25px; /* Further adjust .btn1 padding for very small screens */
+  }
+
+  /* Secondary Nav Bar adjustments for phones */
+  .icons {
+    width: 90%; /* Take up more screen width */
+    max-width: 350px; /* Constrain max width */
+    padding: 0 10px; /* Adjust padding */
+  }
+
+  .f { /* Links within .icons */
+    font-size: 16px; /* Reduce font size */
+    padding: 15px 10px; /* Adjust padding for touch targets */
+  }
+
+  .container { /* Adjust .container width for small mobiles */
+    width: 95%;
+    /* Consider adjusting padding if 20px on each side is too much for 95% width */
+    /* padding: 0 15px; */
+  }
+
+  /* Main content and scene adjustments for mobile phones */
+  .main-container {
+    padding: 0 15px; /* Use fixed padding for better control on small screens */
+    margin-bottom: 100px; /* Further reduce bottom margin */
+  }
+
+  .scene {
+    width: 120px; /* Further reduce cube size */
+    height: 120px;
+    margin: 30px auto; /* Adjust margin */
+  }
+
+  /* Cube face adjustments for a 120px cube (translateZ(60px)) */
+  /* Using !important to ensure these override the 768px styles for translateZ */
+  .scene .outer-cube .face-front,
+  .scene .outer-cube .face-back,
+  .scene .outer-cube .face-top,
+  .scene .outer-cube .face-left,
+  .scene .outer-cube .face-right,
+  .scene .outer-cube .face-bottom {
+    transform: translateZ(60px) !important;
+  }
+  .scene .outer-cube .face-back { transform: rotateY(180deg) translateZ(60px) !important; }
+  .scene .outer-cube .face-top { transform: rotateX(90deg) translateZ(60px) !important; }
+  .scene .outer-cube .face-bottom { transform: rotateX(-90deg) translateZ(60px) !important; }
+  .scene .outer-cube .face-left { transform: rotateY(-90deg) translateZ(60px) !important; }
+  .scene .outer-cube .face-right { transform: rotateY(90deg) translateZ(60px) !important; }
+
+  .scene .inner-cube .face-front,
+  .scene .inner-cube .face-back,
+  .scene .inner-cube .face-top,
+  .scene .inner-cube .face-left,
+  .scene .inner-cube .face-right,
+  .scene .inner-cube .face-bottom {
+    transform: translateZ(60px) !important;
+  }
+  .scene .inner-cube .face-back { transform: rotateY(180deg) translateZ(60px) !important; }
+  .scene .inner-cube .face-top { transform: rotateX(90deg) translateZ(60px) !important; }
+  .scene .inner-cube .face-bottom { transform: rotateX(-90deg) translateZ(60px) !important; }
+  .scene .inner-cube .face-left { transform: rotateY(-90deg) translateZ(60px) !important; }
+  .scene .inner-cube .face-right { transform: rotateY(90deg) translateZ(60px) !important; }
+
+  .main-title {
+    font-size: clamp(1.8rem, 5vw, 3rem); /* Adjust for smallest screens */
+  }
+
+  .subtitle, .description, .stats { /* Assuming .subtitle exists or will be added */
+    font-size: 0.85rem;
+  }
+
+  /* Services Carousel adjustments for mobile phones */
+  .main-3 h1 { /* Assuming .main-3 has an h1 title for the section */
+    font-size: 1.8rem; /* Adjust title size */
+  }
+  .banner {
+    height: 60vh; /* Further adjust banner height */
+  }
+  .slider {
+    width: 150px; /* Further reduce slider width */
+    height: 100px; /* Further reduce slider height */
+    left: calc(50% - 75px); /* Recalculate left position */
+  }
+  .item {
+    /* Further reduce the translateZ value */
+    transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity)))) translateZ(250px);
+  }
+  /* .item img { */
+    /* border-radius: 4px; /* Optional: even smaller border-radius */
+  /* } */
+  .controls {
+    top: 5%; /* Adjust button position */
+  }
+  #toggle-btn { /* Assuming this is the ID for a specific control button */
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .image-text {
+    top: 65%; /* Adjust text position */
+    padding: 10px 15px;
+    max-width: 80%; /* Allow text box to use more of the width */
+    /* background-color: rgba(0,0,0,0.6); /* Optional: slightly more prominent background for readability */
+  }
+  .image-text h3 {
+    font-size: 16px;
+    /* margin-bottom: 5px; */
+  }
+  .image-text p {
+    font-size: 12px;
+    /* line-height: 1.3; */
+  }
+}
+
+/* For small devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+  /* Styles for small devices */
+  /* Logo Adjustments */
+  .logo-wrapper {
+    width: 250px; /* Example, adjust as needed */
+    height: auto;
+    /* Assuming .logo-wrapper might be a flex container for the svg and text */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Or left, depending on design */
+    margin: 0 auto; /* Center the logo wrapper if it's a block */
+  }
+
+  #svg7 { /* Assuming this is the logo SVG */
+    width: 200px; /* Smaller width for the SVG itself */
+    height: auto;
+  }
+
+  .logo-text { /* Assuming this is text part of the logo */
+    font-size: 32px; /* Smaller font size */
+    /* Adjust positioning if using absolute/relative. Example: */
+    /* left: 100px; */ /* This highly depends on the logo's HTML structure */
+    /* If .logo-text is a sibling to #svg7 inside .logo-wrapper, flex properties on .logo-wrapper would be better */
+  }
+
+  /* Main Navigation Bar (.nav-bar) adjustments */
+  .nav-bar {
+    flex-direction: column;
+    align-items: center; /* Center items when stacked */
+  }
+
+  /* Navigation Links Container (.bar-nav) adjustments */
+  .bar-nav {
+    flex-direction: column;
+    align-items: center; /* Center links when stacked */
+    width: 100%;
+    margin: 10px 0;
+    border: none; /* Remove border for stacked layout */
+  }
+
+  /* Individual Links (.link) adjustments */
+  .link {
+    padding: 10px 20px;
+    width: 100%; /* Make links take full width */
+    text-align: center;
+    border-bottom: 1px solid grey; /* Separator for stacked links */
+  }
+
+  .link:last-child {
+    border-bottom: none; /* Remove border from the last link */
+  }
+
+  /* Contact Button (.btn1) adjustments */
+  .btn1 {
+    width: auto; /* Auto width to fit content */
+    padding: 15px 30px; /* Adjust padding */
+    margin: 10px 0; /* Add some margin */
+  }
+
+  /* Hide .line3 separators */
+  .line3 {
+    display: none;
+  }
+
+  .container { /* Adjust .container width for tablets */
+    width: 90%;
+  }
+
+  /* Secondary Nav Bar adjustments for tablets */
+  .icons {
+    width: 70%; /* Increase width percentage */
+    max-width: 550px; /* Constrain max width */
+  }
+
+  /* Main content and scene adjustments for tablets */
+  .main-container {
+    padding: 0 5%; /* Adjust padding for smaller screens */
+    margin-bottom: 150px; /* Reduce bottom margin */
+    /* text-align: center; /* This would typically be inherited from 1024px styles or set in base if items are stacked */
+  }
+
+  .text-section {
+    padding-top: 1rem; /* Adjust spacing, overriding 1024px if applicable */
+  }
+
+  .main-title {
+    font-size: clamp(2rem, 6vw, 4rem); /* Further adjust title size */
+    margin-bottom: 2rem; /* Add some space below the title */
+  }
+
+  .description-grid {
+    /* gap: 1rem; /* Adjust gap for description items if this class is used */
+  }
+
+  .scene { /* Adjustments for the 3D cube scene */
+    width: 150px;
+    height: 150px;
+    margin: 50px auto; /* Centering the scene */
+  }
+
+  /* Cube face transformations for a 150px cube (translateZ(75px)) */
+  .scene .outer-cube .face-front,
+  .scene .outer-cube .face-back,
+  .scene .outer-cube .face-top,
+  .scene .outer-cube .face-left,
+  .scene .outer-cube .face-right,
+  .scene .outer-cube .face-bottom {
+    transform: translateZ(75px);
+  }
+  .scene .outer-cube .face-back { transform: rotateY(180deg) translateZ(75px); }
+  .scene .outer-cube .face-top { transform: rotateX(90deg) translateZ(75px); }
+  .scene .outer-cube .face-bottom { transform: rotateX(-90deg) translateZ(75px); }
+  .scene .outer-cube .face-left { transform: rotateY(-90deg) translateZ(75px); }
+  .scene .outer-cube .face-right { transform: rotateY(90deg) translateZ(75px); }
+
+  .scene .inner-cube .face-front,
+  .scene .inner-cube .face-back,
+  .scene .inner-cube .face-top,
+  .scene .inner-cube .face-left,
+  .scene .inner-cube .face-right,
+  .scene .inner-cube .face-bottom {
+    /* Assuming inner cube faces are half the size of outer cube faces if they are meant to fit inside with some margin */
+    /* Or, if they are the same size and meant to be concentric, they also use 75px */
+    transform: translateZ(75px);
+  }
+  .scene .inner-cube .face-back { transform: rotateY(180deg) translateZ(75px); }
+  .scene .inner-cube .face-top { transform: rotateX(90deg) translateZ(75px); }
+  .scene .inner-cube .face-bottom { transform: rotateX(-90deg) translateZ(75px); }
+  .scene .inner-cube .face-left { transform: rotateY(-90deg) translateZ(75px); }
+  .scene .inner-cube .face-right { transform: rotateY(90deg) translateZ(75px); }
+
+  /* .separator-line { styles for it if used ... } */
+
+  /* Services Carousel adjustments for tablets */
+  .main-3 {
+    height: auto; /* Allow height to adjust to content */
+    padding-bottom: 2rem; /* Add some padding at the bottom */
+  }
+  .banner {
+    height: 70vh; /* Adjust banner height */
+  }
+  .slider {
+    width: 200px; /* Reduce slider width */
+    height: 130px; /* Reduce slider height */
+    left: calc(50% - 100px); /* Recalculate left position */
+  }
+  .item {
+    /* Reduce the translateZ value to bring items closer for smaller slider */
+    /* Ensure --quantity and --position CSS variables are defined on .slider or .item */
+    transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity)))) translateZ(350px);
+  }
+  /* .item img { */
+    /* border-radius: 6px; /* Optional: slightly smaller border-radius */
+  /* } */
+  .controls {
+    top: 8%; /* Adjust button position if needed */
+  }
+  .image-text {
+    top: 70%; /* Adjust text position based on new carousel height */
+    /* font-size: 0.9rem; /* Adjust font size if needed */
+  }
+  /* .image-text h3 { font-size: 18px; } */
+  /* .image-text p { font-size: 13px; } */
+}
+
+/* For medium devices (desktops, 1024px and down) */
+@media (max-width: 1024px) {
+  /* Styles for medium devices */
+  /* Assuming base styles for .main-container like grid layout, .text-section order, etc., are defined elsewhere or will be. */
+  /* The subtask implies some styles like "grid-template-columns: 1fr;" are "already there". */
+  /* If not, they should be added here or in base styles. */
+
+  .main-container {
+    /* Example: text-align might be set here if it's specific to this breakpoint and above for stacking */
+    /* text-align: center; */
+    /* gap: 5%; /* As per prompt, consider if this is needed or handled by specific element margins/paddings */
+  }
+
+  .text-section {
+    /* order: 2; /* Ensures text is below cube when stacked */
+    padding-top: 2rem; /* Add space when it stacks below the cube */
+    /* padding-left: 0; /* As per prompt, this might be a reset */
+  }
+
+  /* .cube-section { */
+    /* order: 1; /* Ensures cube is above text when stacked */
+  /* } */
+
+  /* .description-grid { */
+    /* grid-template-columns: 1fr; /* Stack items in description grid */
+    /* gap: 1.5rem; */
+  /* } */
+
+  .main-title {
+    font-size: clamp(2.5rem, 7vw, 5rem); /* Responsive font size for the main title */
+  }
+
+  .description, .stats { /* General styling for description and stats text */
+    font-size: 0.9rem; /* Ensure readability */
+  }
+}
+
+/* For large devices (large desktops, 1200px and down) */
+@media (max-width: 1200px) {
+  /* Styles for large devices */
+}
+
+/* For extra large devices (extra large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Styles for extra large devices */
+}
+
+/* For very small devices (small phones, 380px and down) */
+@media (max-width: 380px) {
+  /* Styles for very small devices */
+  .nav-bar2 .line3 { /* Targeting .line3 specifically within .nav-bar2 */
+    display: none; /* Hide separators if items are too cramped */
+  }
+
+  .nav-bar2 .f { /* Adjust padding if separators are removed */
+    padding: 15px 8px; /* Example: reduce horizontal padding */
+  }
+}
